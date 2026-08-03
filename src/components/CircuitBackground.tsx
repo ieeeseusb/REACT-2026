@@ -43,11 +43,13 @@ export const CircuitBackground: React.FC = () => {
         }
 
         .animate-circuit-wave-1 {
+          opacity: 0;
           animation: circuitWaveOne 8s ease-in-out infinite;
           animation-delay: 1s;
         }
 
         .animate-circuit-wave-2 {
+          opacity: 0;
           animation: circuitWaveTwo 8s ease-in-out infinite;
           animation-delay: 4.5s;
         }
@@ -55,7 +57,7 @@ export const CircuitBackground: React.FC = () => {
 
       {/* Primary Glowing Circuit Light Wave */}
       <svg
-        className="absolute inset-0 w-full h-full animate-circuit-wave-1"
+        className="absolute inset-0 w-full h-full opacity-0 animate-circuit-wave-1"
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
@@ -123,7 +125,7 @@ export const CircuitBackground: React.FC = () => {
 
       {/* Secondary Staggered Glowing Circuit Light Wave */}
       <svg
-        className="absolute inset-0 w-full h-full animate-circuit-wave-2"
+        className="absolute inset-0 w-full h-full opacity-0 animate-circuit-wave-2"
         xmlns="http://www.w3.org/2000/svg"
         width="100%"
         height="100%"
