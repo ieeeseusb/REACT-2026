@@ -1,6 +1,0 @@
-{
-  "name": "REACT - Southeast University Tech Competition",
-  "description": "Official landing page for REACT national tech and robotics competition at Southeast University hosted by IEEE SEU Student Branch.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
