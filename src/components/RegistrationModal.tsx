@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Trophy, ExternalLink, Copy, Check, Sparkles, MessageCircle, FileText } from 'lucide-react';
+import { X, Trophy, ExternalLink, Copy, Check, Sparkles, MessageCircle, FileText, Clock } from 'lucide-react';
 import { SEGMENTS } from '../data/eventData';
 import { RegistrationData } from '../types';
 
@@ -124,48 +124,74 @@ export const RegistrationModal: React.FC<RegistrationModalProps> = ({
                     {segment.shortDescription}
                   </p>
 
-                  {/* Form Link Action Bar */}
-                  <div className="p-3 bg-gray-50 rounded-xl border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
-                    <div className="flex items-center gap-2 w-full sm:w-auto overflow-hidden">
-                      <span className="text-xs font-mono text-gray-500 bg-white px-2.5 py-1 rounded border border-gray-200 truncate select-all">
-                        {segment.formUrl}
-                      </span>
-                      <button
-                        onClick={() => copyToClipboard(segment.formUrl || '', segment.id)}
-                        className="p-1.5 rounded-lg bg-white hover:bg-gray-100 border border-gray-300 text-gray-600 hover:text-black transition-colors shrink-0 cursor-pointer"
-                        title="Copy form link"
-                      >
-                        {copiedId === segment.id ? (
-                          <Check className="w-4 h-4 text-emerald-600" />
-                        ) : (
-                          <Copy className="w-4 h-4" />
-                        )}
-                      </button>
-                    </div>
+                  {/* Form Link Action Bar / Coming Soon Bar */}
+                  {segment.isComingSoon || !segment.formUrl ? (
+                    <div className="p-3.5 bg-amber-50 rounded-xl border border-amber-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 text-amber-900 font-bold text-xs">
+                        <Clock className="w-4 h-4 text-[#FF7700] shrink-0" />
+                        <span>Registration Form Launching Soon</span>
+                      </div>
 
-                    <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
-                      {segment.portalUrl && (
+                      <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
+                        {segment.portalUrl && (
+                          <a
+                            href={segment.portalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2 bg-black hover:bg-[#FF7700] text-white font-black text-xs uppercase tracking-wider rounded-xl transition-all shadow flex items-center justify-center gap-1.5 cursor-pointer"
+                          >
+                            <span>Shohoj Coding</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        <span className="w-full sm:w-auto px-4 py-2 bg-amber-200 text-amber-900 font-black text-xs uppercase tracking-wider rounded-xl flex items-center justify-center gap-1.5 border border-amber-300">
+                          <span>Coming Soon</span>
+                        </span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="p-3 bg-gray-50 rounded-xl border border-gray-200 flex flex-col sm:flex-row items-center justify-between gap-3">
+                      <div className="flex items-center gap-2 w-full sm:w-auto overflow-hidden">
+                        <span className="text-xs font-mono text-gray-500 bg-white px-2.5 py-1 rounded border border-gray-200 truncate select-all">
+                          {segment.formUrl}
+                        </span>
+                        <button
+                          onClick={() => copyToClipboard(segment.formUrl || '', segment.id)}
+                          className="p-1.5 rounded-lg bg-white hover:bg-gray-100 border border-gray-300 text-gray-600 hover:text-black transition-colors shrink-0 cursor-pointer"
+                          title="Copy form link"
+                        >
+                          {copiedId === segment.id ? (
+                            <Check className="w-4 h-4 text-emerald-600" />
+                          ) : (
+                            <Copy className="w-4 h-4" />
+                          )}
+                        </button>
+                      </div>
+
+                      <div className="flex items-center gap-2 w-full sm:w-auto shrink-0">
+                        {segment.portalUrl && (
+                          <a
+                            href={segment.portalUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-4 py-2.5 bg-black hover:bg-[#FF7700] text-white font-black text-xs uppercase tracking-wider rounded-xl transition-all shadow flex items-center justify-center gap-1.5 cursor-pointer"
+                          >
+                            <span>Shohoj Coding</span>
+                            <ExternalLink className="w-3.5 h-3.5" />
+                          </a>
+                        )}
                         <a
-                          href={segment.portalUrl}
+                          href={segment.formUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="px-4 py-2.5 bg-black hover:bg-[#FF7700] text-white font-black text-xs uppercase tracking-wider rounded-xl transition-all shadow flex items-center justify-center gap-1.5 cursor-pointer"
+                          className="w-full sm:w-auto px-5 py-2.5 bg-[#FF7700] hover:bg-black text-white font-black text-xs uppercase tracking-wider rounded-xl transition-all shadow flex items-center justify-center gap-2 cursor-pointer shrink-0"
                         >
-                          <span>Shohoj Coding</span>
+                          <span>Fill Google Form</span>
                           <ExternalLink className="w-3.5 h-3.5" />
                         </a>
-                      )}
-                      <a
-                        href={segment.formUrl || "#"}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="w-full sm:w-auto px-5 py-2.5 bg-[#FF7700] hover:bg-black text-white font-black text-xs uppercase tracking-wider rounded-xl transition-all shadow flex items-center justify-center gap-2 cursor-pointer shrink-0"
-                      >
-                        <span>Fill Google Form</span>
-                        <ExternalLink className="w-3.5 h-3.5" />
-                      </a>
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               );
             })}

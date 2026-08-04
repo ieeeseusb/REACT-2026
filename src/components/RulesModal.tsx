@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, BookOpen, Trophy, CheckCircle2, ShieldAlert, ExternalLink } from 'lucide-react';
+import { X, BookOpen, Trophy, CheckCircle2, ShieldAlert, ExternalLink, Clock } from 'lucide-react';
 import { Segment } from '../types';
 import { SEGMENTS } from '../data/eventData';
 import { DriveImage } from './DriveImage';
@@ -212,20 +212,30 @@ export const RulesModal: React.FC<RulesModalProps> = ({
         <div className="p-4 bg-gray-100 border-t border-gray-200 flex flex-col sm:flex-row gap-3 justify-end">
           <button
             onClick={onClose}
-            className="px-5 py-2.5 rounded-xl border border-gray-300 font-bold text-xs text-gray-700 hover:bg-gray-200"
+            className="px-5 py-2.5 rounded-xl border border-gray-300 font-bold text-xs text-gray-700 hover:bg-gray-200 cursor-pointer"
           >
             Close
           </button>
-          <a
-            href={segment.formUrl || "#"}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={onClose}
-            className="px-6 py-2.5 rounded-xl bg-[#FF7700] text-white hover:bg-[#e06800] font-black text-xs uppercase tracking-wider shadow inline-flex items-center gap-1.5 cursor-pointer"
-          >
-            <span>Register For {segment.title}</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
+          {segment.isComingSoon || !segment.formUrl ? (
+            <button
+              disabled
+              className="px-6 py-2.5 rounded-xl bg-gray-200 text-gray-600 font-black text-xs uppercase tracking-wider shadow inline-flex items-center gap-1.5 cursor-not-allowed select-none border border-gray-300"
+            >
+              <Clock className="w-3.5 h-3.5 text-gray-500" />
+              <span>Coming Soon</span>
+            </button>
+          ) : (
+            <a
+              href={segment.formUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={onClose}
+              className="px-6 py-2.5 rounded-xl bg-[#FF7700] text-white hover:bg-[#e06800] font-black text-xs uppercase tracking-wider shadow inline-flex items-center gap-1.5 cursor-pointer"
+            >
+              <span>Register For {segment.title}</span>
+              <ExternalLink className="w-3.5 h-3.5" />
+            </a>
+          )}
         </div>
 
       </div>

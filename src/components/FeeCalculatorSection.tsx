@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { Calculator, Trophy, Check, Sparkles, ArrowRight, ShieldCheck, Percent, Users, Award, ExternalLink } from 'lucide-react';
+import { Calculator, Trophy, Check, Sparkles, ArrowRight, ShieldCheck, Percent, Users, Award, ExternalLink, Clock } from 'lucide-react';
 import { SEGMENTS } from '../data/eventData';
 
 interface FeeCalculatorSectionProps {
@@ -370,16 +370,26 @@ export const FeeCalculatorSection: React.FC<FeeCalculatorSectionProps> = () => {
                   </p>
                 </div>
 
-                <a
-                  href={selectedSegment.formUrl || "#"}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full py-3.5 px-6 rounded-xl bg-[#FF7700] hover:bg-white text-white hover:text-black font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#FF7700]/30 cursor-pointer"
-                >
-                  <Trophy className="w-4 h-4" />
-                  <span>Register for {selectedSegment.title}</span>
-                  <ExternalLink className="w-4 h-4" />
-                </a>
+                {selectedSegment.isComingSoon || !selectedSegment.formUrl ? (
+                  <button
+                    disabled
+                    className="w-full py-3.5 px-6 rounded-xl bg-gray-800 text-gray-400 font-black text-xs uppercase tracking-wider flex items-center justify-center gap-2 border border-gray-700 cursor-not-allowed select-none"
+                  >
+                    <Clock className="w-4 h-4 text-gray-400" />
+                    <span>Registration Coming Soon</span>
+                  </button>
+                ) : (
+                  <a
+                    href={selectedSegment.formUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full py-3.5 px-6 rounded-xl bg-[#FF7700] hover:bg-white text-white hover:text-black font-black text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-[#FF7700]/30 cursor-pointer"
+                  >
+                    <Trophy className="w-4 h-4" />
+                    <span>Register for {selectedSegment.title}</span>
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
               </div>
 
             </div>

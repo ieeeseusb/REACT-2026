@@ -114,7 +114,7 @@ export const SEGMENTS: Segment[] = [
     teamSize: "3 - 4 Members",
     totalPrizePool: "BDT 30,000",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
-    formUrl: "https://forms.gle/swNQMxqLqFGd3jAx6",
+    isComingSoon: true,
     techPartner: {
       name: "Shohoj Coding & Shohoj Skills",
       type: "Technical Partner",

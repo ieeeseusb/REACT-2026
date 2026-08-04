@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Trophy, BookOpen, ArrowRight, ChevronDown, Tag, ExternalLink } from 'lucide-react';
+import { Trophy, BookOpen, ArrowRight, ChevronDown, Tag, ExternalLink, Clock } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { SEGMENTS } from '../data/eventData';
 import { Segment } from '../types';
@@ -271,16 +271,26 @@ export const SegmentsSection: React.FC<SegmentsSectionProps> = ({
 
                           {/* Action Buttons */}
                           <div className="pt-3 border-t border-gray-200 flex flex-col sm:flex-row items-center gap-3">
-                            <a
-                              href={segment.formUrl || "#"}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="w-full py-3.5 px-5 bg-[#FF7700] text-white hover:bg-black font-black text-xs uppercase tracking-wider transition-all rounded shadow flex items-center justify-center gap-2 group cursor-pointer"
-                            >
-                              <Trophy className="w-4 h-4" />
-                              <span>Register Now ({segment.feeText})</span>
-                              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                            </a>
+                            {segment.isComingSoon || !segment.formUrl ? (
+                              <button
+                                disabled
+                                className="w-full py-3.5 px-5 bg-gray-200 text-gray-600 font-black text-xs uppercase tracking-wider rounded shadow flex items-center justify-center gap-2 cursor-not-allowed select-none border border-gray-300"
+                              >
+                                <Clock className="w-4 h-4 text-gray-500" />
+                                <span>Coming Soon</span>
+                              </button>
+                            ) : (
+                              <a
+                                href={segment.formUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-full py-3.5 px-5 bg-[#FF7700] text-white hover:bg-black font-black text-xs uppercase tracking-wider transition-all rounded shadow flex items-center justify-center gap-2 group cursor-pointer"
+                              >
+                                <Trophy className="w-4 h-4" />
+                                <span>Register Now ({segment.feeText})</span>
+                                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                              </a>
+                            )}
 
                             {segment.portalUrl && (
                               <a

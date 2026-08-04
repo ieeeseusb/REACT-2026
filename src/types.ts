@@ -22,6 +22,7 @@ export interface Segment {
   image: string;
   formUrl?: string;
   portalUrl?: string;
+  isComingSoon?: boolean;
   techPartner?: TechPartnerInfo;
   rules: string[];
   categories?: {
