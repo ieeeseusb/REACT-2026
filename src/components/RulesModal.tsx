@@ -194,16 +194,23 @@ export const RulesModal: React.FC<RulesModalProps> = ({
               </span>
             </div>
 
-            <div className="pt-2 border-t border-amber-200/60 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-gray-800">
-              <div className="bg-white p-2.5 rounded-xl border border-amber-200/50 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-                <span><strong>IEEE Member Discount:</strong> BDT 100 off / team</span>
+            {segment.feeAmount > 0 ? (
+              <div className="pt-2 border-t border-amber-200/60 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-semibold text-gray-800">
+                <div className="bg-white p-2.5 rounded-xl border border-amber-200/50 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                  <span><strong>IEEE Member Discount:</strong> BDT 100 off / team</span>
+                </div>
+                <div className="bg-white p-2.5 rounded-xl border border-amber-200/50 flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                  <span><strong>Ambassador Discount:</strong> 5% off team fee</span>
+                </div>
               </div>
-              <div className="bg-white p-2.5 rounded-xl border border-amber-200/50 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
-                <span><strong>Ambassador Discount:</strong> 5% off team fee</span>
+            ) : (
+              <div className="pt-2 border-t border-amber-200/60 text-xs font-semibold text-amber-900 bg-white p-2.5 rounded-xl border border-amber-200/50 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-amber-500 shrink-0" />
+                <span><strong>Registration Fee & Discounts:</strong> To Be Announced (Unconfirmed)</span>
               </div>
-            </div>
+            )}
           </div>
 
         </div>

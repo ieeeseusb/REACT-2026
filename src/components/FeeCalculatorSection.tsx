@@ -59,8 +59,8 @@ export const FeeCalculatorSection: React.FC<FeeCalculatorSectionProps> = () => {
         text = `${memberCount} Members × BDT 300 (Junior Track)`;
       }
     } else if (selectedSegId === 'datathon') {
-      baseFee = memberCount * 400;
-      text = `${memberCount} Members × BDT 400`;
+      baseFee = 0;
+      text = `Registration Fee: To Be Announced`;
     } else {
       // Soccer Bot, LFR
       baseFee = memberCount * 500;
@@ -322,15 +322,17 @@ export const FeeCalculatorSection: React.FC<FeeCalculatorSectionProps> = () => {
 
                 <div className="flex justify-between items-center py-1.5 border-b border-gray-800 text-gray-300">
                   <span>Base Fee Subtotal:</span>
-                  <span className="font-bold text-white">BDT {feeCalculation.baseFee}</span>
+                  <span className="font-bold text-white">
+                    {selectedSegId === 'datathon' || selectedSegment.feeAmount === 0 ? 'To Be Announced' : `BDT ${feeCalculation.baseFee}`}
+                  </span>
                 </div>
 
                 <div className="text-[11px] text-gray-400 italic">
-                  Calculation: {feeCalculation.text}
+                  Calculation: {selectedSegId === 'datathon' ? 'Fee for Datathon is not confirmed yet.' : feeCalculation.text}
                 </div>
 
                 {/* Applied Discounts */}
-                {feeCalculation.ieeeDiscount > 0 && (
+                {selectedSegId !== 'datathon' && selectedSegment.feeAmount > 0 && feeCalculation.ieeeDiscount > 0 && (
                   <div className="flex justify-between items-center py-1.5 border-b border-gray-800 text-emerald-400 font-bold">
                     <span className="flex items-center gap-1">
                       <Check className="w-3.5 h-3.5" />
@@ -340,7 +342,7 @@ export const FeeCalculatorSection: React.FC<FeeCalculatorSectionProps> = () => {
                   </div>
                 )}
 
-                {feeCalculation.ambassadorDiscount > 0 && (
+                {selectedSegId !== 'datathon' && selectedSegment.feeAmount > 0 && feeCalculation.ambassadorDiscount > 0 && (
                   <div className="flex justify-between items-center py-1.5 border-b border-gray-800 text-amber-400 font-bold">
                     <span className="flex items-center gap-1">
                       <Percent className="w-3.5 h-3.5" />
@@ -359,10 +361,12 @@ export const FeeCalculatorSection: React.FC<FeeCalculatorSectionProps> = () => {
                     Total Payable Amount
                   </span>
                   <div className="text-3xl sm:text-4xl font-black text-white">
-                    BDT {feeCalculation.finalFee}
+                    {selectedSegId === 'datathon' || selectedSegment.feeAmount === 0 ? 'TBA' : `BDT ${feeCalculation.finalFee}`}
                   </div>
                   <p className="text-[11px] text-gray-400 mt-0.5">
-                    {feeCalculation.ieeeDiscount > 0 || feeCalculation.ambassadorDiscount > 0 ? (
+                    {selectedSegId === 'datathon' || selectedSegment.feeAmount === 0 ? (
+                      <span className="text-amber-400 font-bold">Registration fee is not confirmed yet. Details will be announced soon.</span>
+                    ) : feeCalculation.ieeeDiscount > 0 || feeCalculation.ambassadorDiscount > 0 ? (
                       <span className="text-emerald-400 font-bold">You save BDT {feeCalculation.baseFee - feeCalculation.finalFee} with discounts!</span>
                     ) : (
                       <span>Standard registration fee without additional discounts.</span>
