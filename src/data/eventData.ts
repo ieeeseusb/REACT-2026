@@ -29,7 +29,7 @@ export const HELPLINE_CONTACTS: HelplineContact[] = [
   {
     name: "Salman Sany Jetu",
     role: "IEEE Webmaster",
-    phone: "+880 1575332918",
+    phone: "+880 1575-332918",
     whatsappNumber: "8801575332918"
   }
 ];
@@ -215,9 +215,9 @@ export const SEGMENTS: Segment[] = [
 export const PARTNERS: Partner[] = [
   {
     id: "p-robotech",
-    name: "Robotech Valley",
+    name: "Robo tech valley",
     type: "Technical Partner (LFR & Soccer)",
-    logo: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80",
+    logo: "https://drive.google.com/file/d/1vDCFvaT361IH-_9FBhEvD-2qA8ufMk9p/view?usp=sharing",
     description: "Official technical evaluation and arena management partner for Line Follower Robot (LFR) & Soccer Bot segments.",
     websiteUrl: "https://robotechvalley.com"
   },

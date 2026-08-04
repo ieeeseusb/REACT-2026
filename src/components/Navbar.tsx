@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageCircle, ShieldCheck, ChevronRight } from 'lucide-react';
+import { Menu, X, MessageCircle, ChevronRight } from 'lucide-react';
 import { DriveImage } from './DriveImage';
 import { LOGOS, SOCIAL_LINKS, EVENT_DETAILS } from '../data/eventData';
 
@@ -129,44 +129,44 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenLookup }) 
 
       {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-gray-200 px-4 pt-3 pb-6 shadow-2xl">
+        <div className="lg:hidden bg-white/95 backdrop-blur-xl border-b border-gray-200 px-3.5 pt-2.5 pb-4 shadow-2xl max-h-[calc(100vh-4rem)] overflow-y-auto no-scrollbar">
           {/* Quick Navigation Header & Logos */}
-          <div className="p-3.5 mb-4 rounded-xl bg-white border border-gray-200 shadow-sm">
-            <div className="flex items-center justify-between gap-2 mb-2 pb-2 border-b border-gray-100">
-              <span className="text-[10px] font-black tracking-widest uppercase text-[#FF7700]">
+          <div className="p-2.5 mb-2.5 rounded-xl bg-white border border-gray-200 shadow-sm">
+            <div className="flex items-center justify-between gap-2 mb-1.5 pb-1.5 border-b border-gray-100">
+              <span className="text-[9px] font-black tracking-widest uppercase text-[#FF7700]">
                 Quick Navigation
               </span>
-              <span className="text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+              <span className="text-[9px] text-gray-500 font-bold uppercase tracking-wider">
                 REACT 2026
               </span>
             </div>
 
             {/* Clean Logo Display Row on White Background */}
-            <div className="flex items-center justify-between gap-2 pt-1">
-              <div className="h-10 px-3 py-1 bg-white rounded-lg border border-gray-200/80 flex items-center justify-center shadow-sm">
+            <div className="flex items-center justify-between gap-2 pt-0.5">
+              <div className="h-8 px-2.5 py-0.5 bg-white rounded-lg border border-gray-200/80 flex items-center justify-center shadow-sm">
                 <DriveImage
                   src={LOGOS.eventReact}
                   alt="REACT Logo"
-                  className="h-7 w-auto object-contain"
+                  className="h-5.5 w-auto object-contain"
                   fallbackText="REACT 2026"
                 />
               </div>
 
-              <div className="flex items-center gap-1.5">
-                <div className="h-10 px-2.5 py-1 bg-white rounded-lg border border-gray-200/80 flex items-center justify-center shadow-sm">
+              <div className="flex items-center gap-1">
+                <div className="h-8 px-2 py-0.5 bg-white rounded-lg border border-gray-200/80 flex items-center justify-center shadow-sm">
                   <DriveImage
                     src={LOGOS.organizersIeeeSeu}
                     alt="IEEE Logo"
-                    className="h-6 w-auto object-contain"
+                    className="h-5 w-auto object-contain"
                     fallbackText="IEEE"
                   />
                 </div>
                 <span className="text-gray-400 font-bold text-xs">×</span>
-                <div className="h-10 px-2.5 py-1 bg-white rounded-lg border border-gray-200/80 flex items-center justify-center shadow-sm">
+                <div className="h-8 px-2 py-0.5 bg-white rounded-lg border border-gray-200/80 flex items-center justify-center shadow-sm">
                   <DriveImage
                     src={LOGOS.southeastUniversity}
                     alt="SEU Logo"
-                    className="h-6 w-auto object-contain"
+                    className="h-5 w-auto object-contain"
                     fallbackText="SEU"
                   />
                 </div>
@@ -175,50 +175,39 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenRegister, onOpenLookup }) 
           </div>
 
           {/* Quick Section Links */}
-          <div className="space-y-1">
+          <div className="space-y-0.5">
             {navLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center justify-between px-3.5 py-2.5 rounded-lg text-xs font-black uppercase tracking-wider text-gray-800 hover:bg-[#FF7700]/10 hover:text-[#FF7700] transition-all group"
+                className="flex items-center justify-between px-3 py-1.5 rounded-lg text-xs font-black uppercase tracking-wider text-gray-800 hover:bg-[#FF7700]/10 hover:text-[#FF7700] transition-all group"
               >
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center gap-2">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#FF7700] opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all" />
                   <span>{link.name}</span>
                 </div>
                 {link.badge ? (
-                  <span className="text-[10px] font-black px-2 py-0.5 rounded bg-[#FF7700] text-white shadow-sm">
+                  <span className="text-[9px] font-black px-2 py-0.5 rounded bg-[#FF7700] text-white shadow-sm">
                     {link.badge}
                   </span>
                 ) : (
-                  <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-[#FF7700] group-hover:translate-x-0.5 transition-transform" />
+                  <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:text-[#FF7700] group-hover:translate-x-0.5 transition-transform" />
                 )}
               </a>
             ))}
           </div>
 
           {/* Utility Quick Actions */}
-          <div className="mt-4 pt-4 border-t border-gray-200 grid grid-cols-2 gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenLookup();
-              }}
-              className="py-2.5 px-3 rounded-lg border border-gray-300 font-bold text-[11px] uppercase text-gray-800 hover:bg-gray-100 flex items-center justify-center gap-1.5 transition-colors shadow-sm"
-            >
-              <ShieldCheck className="w-4 h-4 text-[#FF7700]" />
-              <span>Ticket Status</span>
-            </button>
-
+          <div className="mt-2.5 pt-2.5 border-t border-gray-200">
             <a
               href={SOCIAL_LINKS.whatsapp}
               target="_blank"
               rel="noreferrer"
-              className="py-2.5 px-3 rounded-lg bg-emerald-600 text-white font-bold text-[11px] uppercase flex items-center justify-center gap-1.5 hover:bg-emerald-700 transition-colors shadow-sm"
+              className="w-full py-2 px-3 rounded-lg bg-emerald-600 text-white font-bold text-[11px] uppercase flex items-center justify-center gap-1.5 hover:bg-emerald-700 transition-colors shadow-sm"
             >
-              <MessageCircle className="w-4 h-4 fill-white" />
-              <span>WhatsApp</span>
+              <MessageCircle className="w-3.5 h-3.5 fill-white" />
+              <span>Chat on WhatsApp</span>
             </a>
           </div>
         </div>
