@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, BookOpen, Trophy, CheckCircle2, ShieldAlert, ExternalLink } from 'lucide-react';
 import { Segment } from '../types';
 import { SEGMENTS } from '../data/eventData';
+import { DriveImage } from './DriveImage';
 
 interface RulesModalProps {
   segment: Segment | null;
@@ -128,6 +129,58 @@ export const RulesModal: React.FC<RulesModalProps> = ({
               ))}
             </div>
           </div>
+
+          {/* Technical Partner Card */}
+          {segment.techPartner && (
+            <div className="p-3.5 bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white rounded-2xl border border-gray-800 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 bg-white p-1.5 rounded-xl border border-gray-200/80 shrink-0 shadow-sm">
+                  <div className="h-7 w-auto flex items-center justify-center">
+                    <DriveImage
+                      src={segment.techPartner.logo}
+                      alt={segment.techPartner.name}
+                      className="h-6 w-auto object-contain"
+                      fallbackText={segment.techPartner.name}
+                    />
+                  </div>
+                  {segment.techPartner.secondaryLogo && (
+                    <>
+                      <span className="text-gray-400 font-bold text-xs">×</span>
+                      <div className="h-7 w-auto flex items-center justify-center">
+                        <DriveImage
+                          src={segment.techPartner.secondaryLogo}
+                          alt={segment.techPartner.secondaryName || "Partner"}
+                          className="h-6 w-auto object-contain"
+                          fallbackText={segment.techPartner.secondaryName || "Partner"}
+                        />
+                      </div>
+                    </>
+                  )}
+                </div>
+
+                <div>
+                  <span className="text-[10px] font-black uppercase tracking-widest text-[#FF7700] block">
+                    Official Technical Partner
+                  </span>
+                  <h5 className="font-black text-xs sm:text-sm uppercase tracking-wide text-white">
+                    {segment.techPartner.name}
+                  </h5>
+                </div>
+              </div>
+
+              {segment.techPartner.websiteUrl && (
+                <a
+                  href={segment.techPartner.websiteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3 py-1.5 rounded-lg bg-[#FF7700] hover:bg-white hover:text-black text-white font-bold text-[11px] uppercase transition-colors inline-flex items-center gap-1 shrink-0 cursor-pointer shadow-sm"
+                >
+                  <span>Visit Partner</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              )}
+            </div>
+          )}
 
           {/* Total Prize Pool & Discounts Box */}
           <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 space-y-3">

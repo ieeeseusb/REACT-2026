@@ -84,6 +84,12 @@ export const SEGMENTS: Segment[] = [
     totalPrizePool: "BDT 30,000",
     image: "https://drive.google.com/file/d/1LU7sD87nGn-5D1v9ZGajekTaPJoJLhJu/view?usp=sharing",
     formUrl: "https://forms.gle/CQ5b1GHnywDysGmG6",
+    techPartner: {
+      name: "Robo tech valley",
+      type: "Technical Partner",
+      logo: "https://drive.google.com/file/d/1vDCFvaT361IH-_9FBhEvD-2qA8ufMk9p/view?usp=sharing",
+      websiteUrl: "https://robotechvalley.com"
+    },
     rules: [
       "Open for all participants (School, College, University, & Open).",
       "Team limit: strictly 3 to 4 members per team.",
@@ -109,7 +115,14 @@ export const SEGMENTS: Segment[] = [
     totalPrizePool: "BDT 30,000",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80",
     formUrl: "https://forms.gle/swNQMxqLqFGd3jAx6",
-    portalUrl: "https://www.shohojcoding.com/",
+    techPartner: {
+      name: "Shohoj Coding & Shohoj Skills",
+      type: "Technical Partner",
+      logo: "https://drive.google.com/file/d/19vw_jbGij6X-YYFlaR-2-qBTbTZNZok-/view?usp=drive_link",
+      secondaryLogo: "https://drive.google.com/file/d/12GEfZXtt2gnEa4YwPHxzuNjjQ_FFamRs/view?usp=sharing",
+      secondaryName: "Shohoj Skills",
+      websiteUrl: "https://www.shohojcoding.com/"
+    },
     rules: [
       "Strictly University students only.",
       "Team limit: strictly 3 to 4 members per team.",
@@ -135,6 +148,12 @@ export const SEGMENTS: Segment[] = [
     totalPrizePool: "BDT 30,000",
     image: "https://drive.google.com/file/d/1wryqIqvAOU2tDSMUq2eo86MWBQvA30eL/view?usp=sharing",
     formUrl: "https://forms.gle/Qd4dVfUQ2j4e99Bj6",
+    techPartner: {
+      name: "Robo tech valley",
+      type: "Technical Partner",
+      logo: "https://drive.google.com/file/d/1vDCFvaT361IH-_9FBhEvD-2qA8ufMk9p/view?usp=sharing",
+      websiteUrl: "https://robotechvalley.com"
+    },
     rules: [
       "Open for all participants (School, College, University, & Open).",
       "Team limit: strictly 3 to 4 members per team.",

@@ -77,6 +77,13 @@ export const SegmentsSection: React.FC<SegmentsSectionProps> = ({
                         }`}>
                           {segment.eligibility}
                         </span>
+                        {segment.techPartner && (
+                          <span className={`text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded border ${
+                            isExpanded ? 'bg-gray-800 text-[#FF7700] border-gray-700' : 'bg-gray-100 text-gray-700 border-gray-200'
+                          }`}>
+                            Partner: {segment.techPartner.name}
+                          </span>
+                        )}
                       </div>
                       <span className={`text-xs italic ${isExpanded ? 'text-gray-400' : 'text-gray-500'}`}>
                         {segment.category}
@@ -207,6 +214,58 @@ export const SegmentsSection: React.FC<SegmentsSectionProps> = ({
                                   </div>
                                 ))}
                               </div>
+                            </div>
+                          )}
+
+                          {/* Technical Partner Info Card */}
+                          {segment.techPartner && (
+                            <div className="p-3.5 bg-gradient-to-r from-gray-900 via-gray-800 to-black text-white rounded-xl border border-gray-800 shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                              <div className="flex items-center gap-3">
+                                <div className="flex items-center gap-2 bg-white p-1.5 rounded-lg border border-gray-200/80 shrink-0 shadow-sm">
+                                  <div className="h-7 w-auto flex items-center justify-center">
+                                    <DriveImage
+                                      src={segment.techPartner.logo}
+                                      alt={segment.techPartner.name}
+                                      className="h-6 w-auto object-contain"
+                                      fallbackText={segment.techPartner.name}
+                                    />
+                                  </div>
+                                  {segment.techPartner.secondaryLogo && (
+                                    <>
+                                      <span className="text-gray-400 font-bold text-xs">×</span>
+                                      <div className="h-7 w-auto flex items-center justify-center">
+                                        <DriveImage
+                                          src={segment.techPartner.secondaryLogo}
+                                          alt={segment.techPartner.secondaryName || "Partner"}
+                                          className="h-6 w-auto object-contain"
+                                          fallbackText={segment.techPartner.secondaryName || "Partner"}
+                                        />
+                                      </div>
+                                    </>
+                                  )}
+                                </div>
+
+                                <div>
+                                  <span className="text-[10px] font-black uppercase tracking-widest text-[#FF7700] block">
+                                    Technical Partner
+                                  </span>
+                                  <h5 className="font-black text-xs sm:text-sm uppercase tracking-wide text-white">
+                                    {segment.techPartner.name}
+                                  </h5>
+                                </div>
+                              </div>
+
+                              {segment.techPartner.websiteUrl && (
+                                <a
+                                  href={segment.techPartner.websiteUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="px-3 py-1.5 rounded-lg bg-[#FF7700] hover:bg-white hover:text-black text-white font-bold text-[11px] uppercase transition-colors inline-flex items-center gap-1 shrink-0 cursor-pointer shadow-sm"
+                                >
+                                  <span>Visit Partner</span>
+                                  <ExternalLink className="w-3 h-3" />
+                                </a>
+                              )}
                             </div>
                           )}
 

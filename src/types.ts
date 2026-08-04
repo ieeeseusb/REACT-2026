@@ -1,3 +1,12 @@
+export interface TechPartnerInfo {
+  name: string;
+  type: string;
+  logo: string;
+  secondaryLogo?: string;
+  secondaryName?: string;
+  websiteUrl?: string;
+}
+
 export interface Segment {
   id: string;
   title: string;
@@ -13,6 +22,7 @@ export interface Segment {
   image: string;
   formUrl?: string;
   portalUrl?: string;
+  techPartner?: TechPartnerInfo;
   rules: string[];
   categories?: {
     name: string;
